@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="btn">GET DATA</button>
+    <ul class="list">
+
+    </ul>
+    <script>
+        const btn = document.querySelector(".btn");
+        const ul = document.querySelector(".list");
+        btn.addEventListener("click",(e) => {
+            e.preventDefault();
+            fetch("https://fakerapi.it/api/v1/persons")
+            .then((data) => {
+                return data.json()
+            })
+            .then((data) => {
+                data.data.forEach((user,index) => {
+                    const li = document.createElement("li");
+                    li.innerHTML = `
+                    <p>User ${index + 1}</p>
+                    <ul>
+                        <li>Name : ${user.firstname} ${user.lastname}</li>
+                        <li>Email : ${user.email}</li>
+                        <li>Gender : ${user.gender}</li>
+                        <li>Phone no. : ${user.phone}</li>
+                        <li>Website : ${user.website}</li>
+                    </ul>
+                    <br/>
+                    `
+                    ul.appendChild(li); 
+                })
+            })
+        })
+    </script>
+</body>
+</html>
