@@ -7,3 +7,4 @@
 5.  *Expressjs (HTTP server)*
 6.  *Zod (for input authentication)*
 7.  *JWT (for token generation)*
+8.  *MongoDB(basic CRUD operations)*
