@@ -32,17 +32,25 @@
     const secondNumber = document.querySelector("#secondNumber")
     const btn = document.querySelector("#btn")
     const result = document.querySelector("#result")
-    btn.addEventListener("click",(e) => {
+    async function calculate(a,b){
+        const responce = await fetch(`https://sum-server.100xdevs.com/sum?a=${a}&b=${b}`);
+        const ans = await responce.json();
+        result.textContent = ans;
+    }
+    let timer;
+    function debouncing(num1,num2){
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            calculate(num1,num2)
+        },500)
+    }
+    firstNumber.addEventListener("input",(e) =>{
         e.preventDefault();
-        fetch(`https://sum-server.100xdevs.com/sum?a=${firstNumber.value}&b=${secondNumber.value}`)
-            .then(res => {
-                return res.text()
-            })
-            .then(ans => {
-                result.textContent = ans
-            }).catch(err =>{
-                console.log(err.message);
-            })
+        debouncing(firstNumber.value , secondNumber.value)
+    })
+    secondNumber.addEventListener("input",(e) =>{
+        e.preventDefault();
+        debouncing(firstNumber.value , secondNumber.value)
     })
 
 </script>
