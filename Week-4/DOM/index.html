@@ -30,21 +30,20 @@
 <script>
     const firstNumber = document.querySelector("#firstNumber")
     const secondNumber = document.querySelector("#secondNumber")
+    const btn = document.querySelector("#btn")
     const result = document.querySelector("#result")
-    
-    
-    function calculate(num1,num2){
-        this.num1 = Number(num1)
-        this.num2 = Number(num2)
-        return this.num1 + this.num2
-    }
-
-    firstNumber.addEventListener("input",() => {
-        result.textContent = calculate(firstNumber.value,secondNumber.value)
+    btn.addEventListener("click",(e) => {
+        e.preventDefault();
+        fetch(`https://sum-server.100xdevs.com/sum?a=${firstNumber.value}&b=${secondNumber.value}`)
+            .then(res => {
+                return res.text()
+            })
+            .then(ans => {
+                result.textContent = ans
+            }).catch(err =>{
+                console.log(err.message);
+            })
     })
-    secondNumber.addEventListener("input",() => {
-        result.textContent = calculate(firstNumber.value,secondNumber.value)
-    }) 
 
 </script>
 </html>
