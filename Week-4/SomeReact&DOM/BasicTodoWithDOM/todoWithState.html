@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Todo with State</title>
+    <style>
+        body{
+            background-color: black;
+            color: white;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <input type="text" placeholder="Title" id="title" />
+        <input type="text" placeholder="Description" id="description" />
+        <button id="addTodo">add todo</button>
+    </div>
+    <div id="todoCollection" class="container">
+
+    </div>
+    <script>
+        const todoState = [
+            {
+                id : 1,
+                title : "Gym",
+                description : "today i have to go gym by 7pm"
+            },
+            {
+                id : 2,
+                title : "Bike Service",
+                description : "on 04th April i have taken an appointment for bike service"
+            },
+        ]
+
+        const title = document.querySelector("#title");
+        const description = document.querySelector("#description");
+        const btn = document.querySelector("#addTodo");
+        const todoCollection = document.querySelector("#todoCollection");
+
+        function displayTodo(){
+            todoState.forEach(todo => {
+                const div = document.createElement("div");
+                const title = document.createElement("p");
+                const description = document.createElement("p");
+                const status = document.createElement("button");
+                div.style.width = "200px";
+                div.style.border = "2px solid white";
+                div.style.padding = "8px 16px";
+                title.innerText = todo.title;
+                description.innerText = todo.description;
+                status.innerText = "Mark as done";
+                status.addEventListener("click",() => {
+                    if(status.innerText === "Mark as done"){
+                        status.innerHTML = "Done";
+                        div.style.borderColor = "green";
+                    }
+                })
+                div.appendChild(title);
+                div.appendChild(description);
+                div.appendChild(status);
+                todoCollection.appendChild(div);
+            })
+        }
+
+        btn.addEventListener("click",(e) => {
+            e.preventDefault();
+            const todo = {
+                id : todoState.length + 1,
+                title : title.value,
+                description : description.value
+            };
+            todoState.push(todo);
+            
+            todoCollection.innerHTML = "";
+            displayTodo();
+        })
+
+        displayTodo();
+
+        
+    </script>
+</body>
+</html>
