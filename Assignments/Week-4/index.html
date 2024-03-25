@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: #242424;
+            color: #f1f1f1;
+        }
+    </style>
+    <script>
+        let globalId = 1;
+
+        function addTodoToDom(todo) {
+            const parentDiv = document.createElement("div");
+            const title = document.createElement("p");
+            const description = document.createElement("p");
+
+            parentDiv.style.width = "max-content";
+            parentDiv.style.marginBottom = "8px";
+            parentDiv.style.border = "2px solid white";
+            parentDiv.style.borderRadius = "4px";
+            parentDiv.style.padding = "10px 30px 15px";
+            parentDiv.setAttribute("id", todo.id);
+
+            title.innerText = todo.title;
+            description.innerText = todo.description;
+
+            const options = document.createElement("div");
+            const status = document.createElement("button");
+            const remove = document.createElement("button");
+            const edit = document.createElement("button");
+
+            options.style.cssText = "display: flex; flex-direction: row; justify-content: start; gap : 16px";
+
+            status.innerText = "Mark as done";
+            remove.innerText = "delete";
+            edit.innerText = "edit"
+
+            status.addEventListener("click", (e) => {
+                e.preventDefault();
+                if (status.innerText === "Mark as done") {
+                    status.innerText = "Done";
+                    parentDiv.style.borderColor = "green"
+                    edit.remove();
+                }
+            })
+
+            remove.addEventListener("click", (e) => {
+                e.preventDefault();
+                removeTodoFromDom(todo);
+            })
+
+            edit.addEventListener("click", (e) => {
+                e.preventDefault();
+                updateTodoInDom(todo);
+            })
+
+            options.appendChild(status);
+            options.appendChild(remove);
+            options.appendChild(edit);
+
+            parentDiv.appendChild(title);
+            parentDiv.appendChild(description);
+            parentDiv.appendChild(options);
+
+            document.querySelector("#todos").appendChild(parentDiv);
+
+        }
+
+
+        function removeTodoFromDom(todo) {
+            const parentDiv = document.getElementById(todo.id);
+            parentDiv.remove();
+        }
+
+        function updateTodoInDom(todo) {
+            const parentDiv = document.getElementById(todo.id);
+            parentDiv.style.cssText = "width : max-content;display: flex; flex-direction: column; justify-content: start; gap : 16px; border : 2px solid white; padding : 20px 30px; border-radius : 4px; margin-bottom : 8px";
+
+
+            const title = parentDiv.children[0];
+            const editTitle = document.createElement("input");
+            editTitle.style.display = "block"
+            editTitle.value = title.innerText;
+
+            const description = parentDiv.children[1];
+            const editDescription = document.createElement("input");
+            editDescription.style.display = "block"
+            editDescription.value = description.innerText;
+
+            const option = parentDiv.children[2];
+            const editOption = document.createElement("div");
+            editOption.style.cssText = "display: flex; flex-direction: row; justify-content: start; gap : 16px";
+
+            const cancel = document.createElement("button");
+            const save = document.createElement("button");
+            cancel.innerText = "cancel";
+            save.innerText = "save";
+
+            save.addEventListener("click", (e) => {
+                e.preventDefault();
+                title.innerText = editTitle.value;
+                description.innerText = editDescription.value;
+                editTitle.replaceWith(title);
+                editDescription.replaceWith(description);
+                editOption.replaceWith(option);
+                parentDiv.style.cssText = "width : max-content; margin-bottom : 8px; border : 2px solid white; boder-radius : 4px; padding : 10px 30px 15px";
+            })
+
+            cancel.addEventListener("click", (e) => {
+                e.preventDefault();
+                editTitle.replaceWith(title);
+                editDescription.replaceWith(description);
+                editOption.replaceWith(option);
+                parentDiv.style.cssText = "width : max-content; margin-bottom : 8px; border : 2px solid white; boder-radius : 4px; padding : 10px 30px 15px";
+            })
+
+            editOption.appendChild(cancel);
+            editOption.appendChild(save);
+
+            title.replaceWith(editTitle);
+            description.replaceWith(editDescription);
+            option.replaceWith(editOption);
+        }
+
+        function addTodo() {
+            const title = document.getElementById("title").value;
+            const description = document.getElementById("description").value;
+            const todo = {
+                title: title,
+                description: description,
+                id: globalId++,
+            }
+            addTodoToDom(todo);
+        }
+    </script>
+</head>
+
+<body>
+    <input type="text" id="title" placeholder="Todo title"></input> <br /><br />
+    <input type="text" id="description" placeholder="Todo description"></input> <br /><br />
+    <button onclick="addTodo()">Add todo</button>
+    <br /> <br />
+
+    <div id="todos">
+
+    </div>
+</body>
+
+</html>
