@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function updateCounter(){
+            const counterSpan = document.querySelector("#counter");
+            const counter = parseInt(counterSpan.textContent);
+            if(counter < 20){
+                counterSpan.textContent = counter + 1;
+            }
+        }
+    </script>
+</head>
+<body>
+    <button onclick="updateCounter()">Counter <span id="counter">0</span></button>
+</body>
+</html>
