@@ -1,0 +1,79 @@
+.cards-container{
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+    margin-inline: auto;
+}
+
+.card{
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+    border: none;
+    box-shadow: 0 0 10px #fff;
+    border-radius: 4px;
+    padding: 15px;
+}
+
+.card > .userDetails,
+.card > .intrests {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.5rem;
+}
+
+.card > .userDetails > h2{
+    text-decoration: underline dotted;
+    font-size: 1.75rem;
+    color: #fff;
+}
+
+.card > .userDetails > p{
+    line-height: 1.15;
+    font-size: 1rem;
+    color: azure;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.card > .intrests > h3{
+    text-decoration: underline dotted;
+    font-size: 1.35rem;
+}
+
+.card > .intrests > ul{
+    list-style-type: none;
+    text-decoration: none;
+    color: azure;
+    line-height: 1.25;
+}
+
+.card > .links{
+    display: flex;
+    gap: 1.5rem;
+    text-decoration: none;
+}
+
+.card > .links > a > button{
+    padding: 0.25rem 0.5rem;
+    font-size: 1.15rem;
+    background-color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.15s ease-in-out;
+}
+
+.card > .links > a > button:hover{
+    box-shadow: 0 0 10px #fff;
+    background-color: #1DA1F2;
+    color: white;
+}
