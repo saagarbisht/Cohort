@@ -1,0 +1,26 @@
+*,
+::after,
+::before{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+ul{
+    list-style-type: none;
+    text-decoration: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 1rem;
+    margin: 1rem;
+}
+
+ul > li{
+    padding: 0.5rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.5rem;
+    box-shadow:  0 0 10px black;
+    border-radius: 4px;
+}

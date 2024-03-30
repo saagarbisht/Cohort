@@ -8,11 +8,11 @@ import TodosWithHook from './components/TodosWithHook.jsx'
 import WraperComponent from './components/WraperComponent.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <>
     {/* <App /> */}
     {/* <Memos /> */}
     {/* <Key /> */}
     {/* <WraperComponent /> */}
     <TodosWithHook />
-  </React.StrictMode>,
+  </>
 )
