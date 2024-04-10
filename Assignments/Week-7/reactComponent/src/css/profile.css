@@ -1,0 +1,100 @@
+.card{
+    flex-grow: 1;
+    position: relative;
+    min-width: 300px;
+    max-width: 300px;
+    min-height: 300px;
+    max-height: 300px;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 0 10px black;
+    padding: 0.5rem 1rem;
+}
+.top{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 60%;
+    width: 100%;
+    background: rgb(9,9,121);
+    background: linear-gradient(90deg, rgba(9,9,121,0.4766281512605042) 12%, rgba(0,212,255,0.3897934173669467) 73%);
+}
+
+.bottom{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    top: 40%;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.card{
+    text-align: center;
+}
+
+.faint{
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.name{
+    font-size: 1.15rem;
+    font-weight: bold;
+    line-height: 1.7;
+}
+
+.age{
+    font-size: 0.95rem;
+    font-weight: normal;
+    margin-left: 0.35rem;
+}
+
+.bottomPart{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    top: 60%;
+    width: 100%;
+    background-color: whitesmoke;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: center;
+}
+
+.topPart{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 40%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.small{
+    font-size: 0.8rem;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.image{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profilePicture{
+    position: absolute;
+    top: -60%;
+    width: 100px;
+    height: 100px;
+    border: 1px solid whitesmoke;
+    border-radius: 50%;
+}
