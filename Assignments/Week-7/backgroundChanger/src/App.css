@@ -1,0 +1,35 @@
+.container{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+}
+
+.secondContainer{
+    position: absolute;
+    bottom: 10%;
+    width: max-content;
+    margin-inline: auto;
+    padding: 0.5rem 1rem;
+    background-color: white;
+    border: none;
+    border-radius: 40px;
+}
+
+.colorPicker{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn{
+    padding: 0.5rem 1.25rem;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
