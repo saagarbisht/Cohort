@@ -1,0 +1,36 @@
+.container {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 3rem;
+}
+
+.inputField{
+    text-align: center;
+}
+
+.inputField > input{
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    width: 500px;
+    border-radius: 5px;
+    border: 2px solid rgba(0, 0, 0, 0.342);
+}
+
+.inputField > button{
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin-left: 1rem;
+}
+
+h1 {
+    text-align: center;
+}
+
+.generatedPara{
+    width: 80%;
+    margin-inline: auto;
+    margin-top: 2rem;
+}
