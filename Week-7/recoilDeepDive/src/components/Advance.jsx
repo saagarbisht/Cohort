@@ -1,5 +1,5 @@
 import React from 'react'
-import { RecoilRoot, useRecoilValue } from 'recoil'
+import { RecoilRoot, useRecoilValue, useRecoilValueLoadable } from 'recoil'
 import { todosAtom } from '../stores/atom'
 
 export default function Advance() {
@@ -17,17 +17,25 @@ export default function Advance() {
 }
 
 function Todo({id}){
-    const todo = useRecoilValue(todosAtom(id))
-    return (
-        <>
+    const todo = useRecoilValueLoadable(todosAtom(id))
+    if(todo.state === "loading"){
+        return (
             <div>
-                <h2>
-                    {todo.title}
-                </h2>
-                <h4>
-                    {todo.description}
-                </h4>
+                loading ....
             </div>
-        </>
-    )
+        )
+    }else if(todo.state === "hasValue"){
+        return (
+            <>
+                <div>
+                    <h2>
+                        {todo.contents.title}
+                    </h2>
+                    <h4>
+                        {todo.contents.description}
+                    </h4>
+                </div>
+            </>
+        )
+    }
 }

@@ -27,6 +27,7 @@ export const todosAtom = atomFamily({
     default : selectorFamily({
         key : "selectorFamily",
         get : (id) => async({get}) => {
+            await new Promise(res => setTimeout(() => res("hello"),4000));
             const responce = await axios.get(`https://sum-server.100xdevs.com/todo?id=${id}`)
             return responce.data.todo;
         }
