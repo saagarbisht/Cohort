@@ -4,7 +4,7 @@ const {connect} = require("mongoose")
 const mainRouter = require("./routes/index")
 const app = express();
 
-connect('mongodb://DESKTOP-JR3MHMR:27017,DESKTOP-JR3MHMR:27018,DESKTOP-JR3MHMR:27019?replicaSet=rs')
+connect('mongodb://localhost:27017/backendPaymentApp')
 .then(() => console.log("mongodb connected..."))
 .catch(() => console.log("unable to connect..."))
 
