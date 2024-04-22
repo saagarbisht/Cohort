@@ -27,7 +27,7 @@ async function signup (req,res){
                 balance : randomBalance(),
             })
             const token = jwt.sign({userId},JWT_KEY)
-            return res.json({"msg":"signup completed",token})
+            return res.json({token})
         }
     }
 }

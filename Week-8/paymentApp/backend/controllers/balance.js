@@ -4,7 +4,7 @@ const {default:mongoose} = require("mongoose")
 async function getCurrentBalance(req,res){
     const userId = req.userId;
     const userBalance = await Balance.findOne({userId})
-    return res.json({balance : userBalance.balance})
+    return res.json({balance : userBalance.balance, user : req.user})
 }
 
 async function transferMoney(req,res){
