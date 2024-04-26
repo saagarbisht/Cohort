@@ -8,4 +8,5 @@
 6.  *Zod (for input authentication)*
 7.  *JWT (for token generation)*
 8.  *MongoDB(basic CRUD operations)*
-9.  *React(hooks,state,context-api)*
+9.  *React(hooks,state,context-api,etc)*
+10. *Typescript*
